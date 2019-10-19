@@ -1,7 +1,7 @@
-var $noteTitle = $(".note-title");
-var $noteText = $(".note-textarea");
-var $saveNoteBtn = $(".save-note");
-var $newNoteBtn = $(".new-note");
+var $noteTitle = $("#notetitle");
+var $noteText = $("#notecontent");
+var $saveNoteBtn = $("#savenotebtn");
+var $newNoteBtn = $("#newnotebtn");
 var $noteList = $(".list-container .list-group");
 
 // activeNote is used to keep track of the note in the textarea
@@ -34,7 +34,15 @@ var renderActiveNote = function() {
 
 // Get the note data from the inputs, save it to the db and update the view
 var handleNoteSave = function() {
-  
+  event.preventDefault();
+  let notesaved = $noteText.val().trim();
+  activeNote.push(notesaved);
+  console.log(notesaved);
+
+  $.post("/api/notes", notesaved,
+  function(){
+    $noteText.val("");
+  })
 };
 
 // Delete the clicked note

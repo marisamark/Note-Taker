@@ -1,4 +1,4 @@
-var NoteData = require("../Develop/notes");
+var NoteData = require("../notes");
 
 module.exports = function (app) {
 
@@ -8,18 +8,7 @@ module.exports = function (app) {
     };
 
     app.post("/api/notes", function (req, res) {
-        var newNote = req.body;
-        if (NoteData.length < NoteData.length[i]) {
-            NoteData.push(newNote);
-            console.log(JSON.stringify(newNote))
-            res.json(newNote);
-        } else {
-
-        }
-    });
- 
-    app.post("/api/notes", function (req, res) {
-        NoteData.length = 0;
+        NoteData.push(req.body);
         res.json({ ok: true });
     });
 };
