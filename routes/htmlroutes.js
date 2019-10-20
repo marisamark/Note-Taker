@@ -11,6 +11,9 @@ app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/index.html"))
 });
 
+app.get("/styles", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/css/styles.css"));
+  });
 }
 
 //add styles.css and index.js
